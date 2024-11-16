@@ -11,7 +11,7 @@ int main() {
 		return -1;
 	}
 
-	theFontDefinition* myFont = theFont->fontMaker("assets/Roboto-Regular.ttf", 80, 2);
+	theFontDefinition* myFont = theFont->fontMaker("assets/Roboto-Regular.ttf", 20, 2);
 	if (myFont == nullptr) {
 		std::cerr << "Could not load font" << std::endl;
 		return -1;
@@ -25,14 +25,29 @@ int main() {
 
 	bitmaps->clear(0x36, 0x39, 0x3F, 0xff);
 
-	bitmaps->overlayPixel({ 0, 0, 0, 255 }, 800/2, 600/2);
-	
-	Circle circle1(30, { 255, 255, 0, 255 });
-	circle1.drawOnImage(bitmaps, { 800 / 2 - 30, 600 / 2 - 30 });
+	bitmaps->overlayPixel({ 0, 0, 0, 255 }, 800 / 2, 600 / 2);
+
+	Circle circle1(80, { 255, 255, 0, 255 });
+	circle1.drawOnImage(bitmaps, { 800 / 2 - 80, 600 / 2 - 80 });
+
+	{
+		SEImage myTest;
+		auto r = myTest.loadFile("assets/gravatar-user-420.png");
+		if (r == errorcode::OK) {
+			auto sizeOfTestImg = myTest.getSize();
+			myTest.drawOnImage(bitmaps, { 800 / 2 - (sizeOfTestImg.x / 2), 600 / 2 - (sizeOfTestImg.y / 2) });
+			{
+				Circle mb(sizeOfTestImg.x/2, { 0,0,0,0xff });
+				Mask m((Drawable*) &myTest, (Drawable*)&mb, {0,0});
+				m.drawOnImage(bitmaps, { 20, 30 });
+			};
+		}
+	};
+
 
 	myFont->setColor({ 0x43, 0x94, 0xfb, 0xff });
 
-	bitmaps->drawText(myFont, "Hello Test!\nMy Test!!", 0, 0);
+	bitmaps->drawText(myFont, "Hello Test!\nMy Test!!", 136, 60);
 	if (bitmaps->errorG()) {
 		std::cerr << "Could not load some character" << std::endl;
 	}
