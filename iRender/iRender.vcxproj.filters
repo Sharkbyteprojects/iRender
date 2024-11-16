@@ -55,8 +55,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Roboto-Regular.ttf">
+    <Font Include="assets\Roboto-Regular.ttf">
       <Filter>SideFiles</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\gravatar-user-420.png">
+      <Filter>SideFiles</Filter>
+    </Image>
   </ItemGroup>
 </Project>

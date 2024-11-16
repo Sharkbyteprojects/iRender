@@ -11,7 +11,7 @@ int main() {
 		return -1;
 	}
 
-	theFontDefinition* myFont = theFont->fontMaker("Roboto-Regular.ttf", 80, 2);
+	theFontDefinition* myFont = theFont->fontMaker("assets/Roboto-Regular.ttf", 80, 2);
 	if (myFont == nullptr) {
 		std::cerr << "Could not load font" << std::endl;
 		return -1;
