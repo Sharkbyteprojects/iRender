@@ -1,5 +1,8 @@
 # iRender
 
+## Vcpkg
+To use it, you need to have VCPKG installed and configured to work with Visual Studio
+
 ## Entry Point
 The Entry Point is in the file `iRender.cpp`
 
